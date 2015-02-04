@@ -85,13 +85,13 @@ function arrayToList(arr) {
 }
 
 function listToArray(list) {
-  // Write a function that produces an array from a list
   var mass = [];
   while(list>0){
     mass.push(list.value);
     list = list.rest;
   }
 return mass;
+  // Write a function that produces an array from a list
   }
 
 function prepend(item, list) {
