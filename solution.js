@@ -1,20 +1,22 @@
 function range(start, end, step) {
   // Write a range function that takes two arguments, start and end,
   // and returns an array containing all the numbers from start up to (and including) end.
- var arr = [];
- if(!step){
-  step = 1;
- }
-  if(step < 0 && start > end){
-   for (var i = start; i > end; i += step)      
-    arr.push(i);
-  }
-
-if (step > 0 ) {
-   for (var i = start; i < end; i += step)
-     arr.push(i);
- }
- return arr;
+ var array = [];
++  if (step==undefined) {
++    step = 1;
++    for (var i=start; i<=end; i+=step) {
++    array.push(i);
++    }
++  } else if (step>0) {
++    for (var i=start; i<=end; i+=step) {
++    array.push(i);
++    }
++  } else if (step<0) {
++    for (var i=start; i>=end; i+=step) {
++      array.push(i);
++    }
++  } 
++  return array;
 }
 
 function sum(numbers) {
@@ -86,7 +88,7 @@ function arrayToList(arr) {
 
 function listToArray(list) {
    var mass = [];
-  while(list>0){
+  while(list!= null){
     mass.push(list.value);
     list = list.rest;
   }
@@ -122,39 +124,28 @@ function deepEqual(a, b) {
   // only if they are the same value or are objects with the same
   // properties whose values are also equal when compared with
   // a recursive call to deepEqual.
-  var property1str = 0;
- var property2str = 0;
- var property1 = 0;
- var property2 = 0;
- if(a != 'object' && b!= "object" || a == null && b == null){
-  if(a ==b){
-    return true;
-  } else {
-  return false;
-}
- } if(a == 'object' && b == 'object'){
-    for(property1 in a){
-      property1str++;
+if (typeof a === "object" && a!==null && typeof b === "object" && b!==null) {
+    var countKeysInA = 0;
+    var countKeysInB = 0;
+    for (var key in a) {
+      countKeysInA++;
     }
-    for(property2 in b){
-      property2str++;
+    for (var key in b) {
+     countKeysInB++;
     }
-    if(property1str !=property2str){
-      return false;
-    }else{
-      for(property2 in a){
-        if(property1 in b){
-          return deepEqual(a[property1],b[property2]);
-        }else{
+    if (countKeysInA===countKeysInB) {
+      for (var key in a) {
+        if (key in b) {
+          return deepEqual(a[key], b[key]);
+        } else {
           return false;
         }
       }
-    }
- }else{
-      return false;
-    }   
+    } 
+ } else {  
+   return a===b;
+  }
 }
-
 module.exports = {
   range: range,
   sum: sum,
