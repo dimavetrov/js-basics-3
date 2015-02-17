@@ -2,21 +2,21 @@ function range(start, end, step) {
   // Write a range function that takes two arguments, start and end,
   // and returns an array containing all the numbers from start up to (and including) end.
  var array = [];
-+  if (step==undefined) {
-+    step = 1;
-+    for (var i=start; i<=end; i+=step) {
-+    array.push(i);
-+    }
-+  } else if (step>0) {
-+    for (var i=start; i<=end; i+=step) {
-+    array.push(i);
-+    }
-+  } else if (step<0) {
-+    for (var i=start; i>=end; i+=step) {
-+      array.push(i);
-+    }
-+  } 
-+  return array;
+  if (step===undefined){
+    step = 1;
+    for (var i=start; i<=end; i+=step) {
+    array.push(i);
+    }
+  } else if (step>0) {
+   for (var i=start; i<=end; i+=step) {
+    array.push(i);
+    }
+  } else if (step<0) {
+    for (var i=start; i>=end; i+=step) {
+      array.push(i);
+    }
+  }
+  return array;
 }
 
 function sum(numbers) {
@@ -33,10 +33,9 @@ function reverseArray(arr) {
   // Write a function which takes an array as argument
   // and produces a new array that has the same elements in the inverse order.
   var arr2 = [];
-  for(var i=0;i<arr.length;i++){
+  for(var i =arr.length-1;i>=0;i--){
   arr2.push(arr[i]);
 }
-  arr2.reverse();
   return arr2;
 }
 
